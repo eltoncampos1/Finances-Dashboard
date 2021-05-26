@@ -1,7 +1,9 @@
+import { Dashboard } from "../layouts/DashBoard";
+
 export default function Home() {
   return (
     <div>
-      <h1>Hello</h1>
+      <Dashboard />
     </div>
   );
 }
