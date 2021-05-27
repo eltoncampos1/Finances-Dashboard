@@ -6,6 +6,10 @@ export const Header = styled.header`
     height: 90px;
 
     grid-area: header;
+
+
+
+   background: #fff;
 `;
 export const HeaderContainer = styled.div`
     display: flex;
@@ -38,6 +42,7 @@ export const InfoContent = styled.div`
         justify-content: center;
         flex-direction: column;
         margin-left: 10px;
+
         
          span:first-child {
             font-size: 8px;
