@@ -1,17 +1,37 @@
 // import Image from "next/image";
 
-import { useEffect } from "react";
 import { Cells } from "../Cells";
 import * as S from "./styles";
 
-export function Content() {
-  useEffect(() => {}, []);
+interface DataApi {
+  equity: number;
+  valueApplied: number;
+  equityProfit: number;
+  percentageProfit: number;
+  indexerValue: number;
+  percentageOverIndexer: number;
+}
 
+export function Content({
+  equity,
+  equityProfit,
+  valueApplied,
+  percentageProfit,
+  indexerValue,
+  percentageOverIndexer,
+}: DataApi) {
   return (
     <S.Container>
       <S.TopContent>
         <h2>Renda Fixa</h2>
-        <Cells />
+        <Cells
+          equity={equity}
+          valueApplied={valueApplied}
+          equityProfit={equityProfit}
+          percentageProfit={percentageProfit}
+          indexerValue={indexerValue}
+          percentageOverIndexer={percentageOverIndexer}
+        />
       </S.TopContent>
     </S.Container>
   );
