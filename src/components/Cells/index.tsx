@@ -1,57 +1,50 @@
 import { useEffect, useState } from "react";
 import api from "../../utils/api";
+import { moneyFormat } from "../../utils/moneyFormat";
 import * as S from "./styles";
 
 interface DataApi {
-  snapshotByPortfolio: {
-    equity: number;
-    valueApplied: number;
-    equityProfit: number;
-    percentageProfit: number;
-    indexerValue: number;
-    percentageOverIndexer: number;
-  };
+  equity: number;
+  valueApplied: number;
+  equityProfit: number;
+  percentageProfit: number;
+  indexerValue: number;
+  percentageOverIndexer: number;
 }
 
-export function Cells() {
-  const [apiData, setApidata] = useState<DataApi>({} as DataApi);
-
-  useEffect(() => {
-    api
-      .get("/")
-      .then(({ data }) => {
-        setApidata(data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+export function Cells({
+  equity,
+  valueApplied,
+  equityProfit,
+  percentageProfit,
+  indexerValue,
+  percentageOverIndexer,
+}: DataApi) {
   return (
     <S.Container>
       <S.Cell>
         <span>Saldo Bruto</span>
-        <span>R$ {apiData.snapshotByPortfolio.equity}</span>
+        <span>{moneyFormat(equity)}</span>
       </S.Cell>
       <S.Cell>
         <span>Valor aplicado</span>
-        <span>R$ {apiData.snapshotByPortfolio.valueApplied}</span>
+        <span>{moneyFormat(valueApplied)}</span>
       </S.Cell>
       <S.Cell>
         <span>Resultado</span>
-        <span>R$ {apiData.snapshotByPortfolio.equityProfit}</span>
+        <span>{moneyFormat(equityProfit)}</span>
       </S.Cell>
       <S.Cell>
         <span>Rentabilidade</span>
-        <span>{apiData.snapshotByPortfolio.percentageProfit}%</span>
+        <span>{percentageProfit}%</span>
       </S.Cell>
       <S.Cell>
         <span>cdi</span>
-        <span>{apiData.snapshotByPortfolio.indexerValue}%</span>
+        <span>{indexerValue}%</span>
       </S.Cell>
       <S.Cell>
         <span>% sobre cdi</span>
-        <span>{apiData.snapshotByPortfolio.percentageOverIndexer}%</span>
+        <span>{percentageOverIndexer}%</span>
       </S.Cell>
     </S.Container>
   );
