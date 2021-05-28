@@ -39,5 +39,6 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Montserrat', sans-serif;
         -webkit-font-smoothing: antialiased;
         color: #707B81;
+        background: #EEF2F4;
     }
 `;
